@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#f5f0e8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>The Brew - Menu</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f0e8;
+            color: #2c2c2c;
+            min-height: 100vh;
+            padding: 0;
+            position: relative;
+        }
+
+        /* Wavy Background Architecture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: linear-gradient(180deg, #e8dcc8 0%, #f5f0e8 100%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 200px;
+            left: -50%;
+            right: -50%;
+            height: 200px;
+            background: #f5f0e8;
+            border-radius: 50% 50% 0 0;
+            z-index: -1;
+        }
+
+        .wave-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .wave-decoration::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -50%;
+            width: 200%;
+            height: 150px;
+            background: 
+                radial-gradient(ellipse at 25% 100%, #ebe3d5 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 100%, #e8dcc8 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Wavy Section Dividers */
+        .wave-divider {
+            width: 100%;
+            height: 30px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C300,120 600,0 900,60 C1050,90 1150,90 1200,60 L1200,120 L0,120 Z' fill='%23e8dcc8' fill-opacity='0.4'/%3E%3C/svg%3E") no-repeat center;
+            background-size: cover;
+            margin: 10px 0;
+        }
+
+        /* Header & Logo */
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 40px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C150,80 350,0 600,50 C850,100 1050,20 1200,80 L1200,0 L0,0 Z' fill='none' stroke='%23d4c4a8' stroke-width='2'/%3E%3C/svg%3E") no-repeat center;
+            background-size: cover;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .logo-the {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #8b7355;
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: -8px;
+            font-style: italic;
+        }
+
+        .logo-brew {
+            font-family: 'Bree Serif', serif;
+            font-size: 3.5rem;
+            color: #5c4a32;
+            letter-spacing: 18px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-left: 18px;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #a08c72;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(212, 196, 168, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-family: 'Bree Serif', serif;
+            font-size: 1.3rem;
+            color: #5c4a32;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4c4a8;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #8b7355;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px dotted #d4c4a8;
+            position: relative;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-details {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .item-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4a3c2a;
+            margin-bottom: 4px;
+        }
+
+        .item-description {
+            font-size: 0.8rem;
+            color: #a08c72;
+            line-height: 1.4;
+        }
+
+        .item-price {
+            font-family: 'Bree Serif', serif;
+            font-size: 1rem;
+            color: #8b7355;
+            white-space: nowrap;
+            background: linear-gradient(135deg, #f5f0e8 0%, #ebe3d5 100%);
+            padding: 4px 12px;
+            border-radius: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60' fill='none' stroke='%23d4c4a8' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat center top;
+            background-size: cover;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: #a08c72;
+            letter-spacing: 1px;
+        }
+
+        .wifi-info {
+            margin-top: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(235,227,213,0.6) 100%);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 196, 168, 0.5);
+        }
+
+        .wifi-info p {
+            font-size: 0.8rem;
+            color: #8b7355;
+        }
+
+        .wifi-info strong {
+            color: #5c4a32;
+        }
+
+        /* Category Icons */
+        .section-icon {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation dots for categories */
+        .nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            padding: 0 5px;
+        }
+
+        .nav-dot {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #8b7355;
+            text-decoration: none;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(235,227,213,0.7) 100%);
+            border: 1px solid #d4c4a8;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .nav-dot:hover,
+        .nav-dot:active {
+            background: linear-gradient(135deg, #5c4a32 0%, #8b7355 100%);
+            color: #f5f0e8;
+            border-color: #5c4a32;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(92, 74, 50, 0.2);
+        }
+
+        /* Mobile touch feedback */
+        @media (hover: none) {
+            .nav-dot:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Decorative wavy lines */
+        .wavy-line {
+            width: 100%;
+            height: 20px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 Q150,0 300,30 T600,30 T900,30 T1200,30' fill='none' stroke='%23d4c4a8' stroke-width='2'/%3E%3C/svg%3E") repeat-x center;
+            background-size: 300px 20px;
+            margin: 15px 0;
+            opacity: 0.6;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 15px 12px;
+            }
+
+            .logo-the {
+                font-size: 2rem;
+            }
+
+            .logo-brew {
+                font-size: 2.8rem;
+                letter-spacing: 12px;
+                margin-left: 12px;
+            }
+
+            .tagline {
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+            }
+
+            header {
+                padding: 30px 0 25px;
+            }
+
+            .menu-section {
+                padding: 20px 15px;
+                margin-bottom: 25px;
+                border-radius: 15px;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+
+            .item-name {
+                font-size: 0.95rem;
+            }
+
+            .item-description {
+                font-size: 0.75rem;
+            }
+
+            .item-price {
+                font-size: 0.9rem;
+                padding: 3px 10px;
+            }
+
+            .menu-item {
+                padding: 10px 0;
+            }
+
+            .wifi-info {
+                padding: 15px;
+            }
+
+            .nav-dots {
+                gap: 6px;
+            }
+
+            .nav-dot {
+                padding: 7px 10px;
+                font-size: 0.6rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media screen and (max-width: 360px) {
+            .logo-the {
+                font-size: 1.8rem;
+            }
+
+            .logo-brew {
+                font-size: 2.2rem;
+                letter-spacing: 8px;
+                margin-left: 8px;
+            }
+
+            .nav-dot {
+                padding: 6px 8px;
+                font-size: 0.55rem;
+            }
+        }
+
+        /* Safe area for notched phones */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Wavy Architecture Decoration -->
+    <div class="wave-decoration"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span class="logo-the">the</span>
+                <span class="logo-brew">BREW</span>
+            </div>
+            <p class="tagline">Artisan Coffee House</p>
+        </header>
+
+        <!-- Wavy Divider -->
+        <div class="wavy-line"></div>
+
+        <!-- Navigation -->
+        <nav class="nav-dots">
+            <a href="#petit-dej" class="nav-dot">Petit Déj</a>
+            <a href="#crepes-sucrees" class="nav-dot">Crêpes</a>
+            <a href="#gaufres" class="nav-dot">Gaufres</a>
+            <a href="#glaces" class="nav-dot">Glaces</a>
+            <a href="#salades" class="nav-dot">Salades</a>
+            <a href="#burgers" class="nav-dot">Burgers</a>
+            <a href="#grillades" class="nav-dot">Grillades</a>
+            <a href="#marocain" class="nav-dot">Marocain</a>
+            <a href="#pizzas" class="nav-dot">Pizzas</a>
+            <a href="#pates" class="nav-dot">Pâtes</a>
+            <a href="#sandwichs" class="nav-dot">Sandwichs</a>
+            <a href="#crepes-salees" class="nav-dot">Crêpes Salées</a>
+            <a href="#desserts" class="nav-dot">Desserts</a>
+            <a href="#milkshakes" class="nav-dot">Milkshakes</a>
+            <a href="#boissons-chaudes" class="nav-dot">Boissons Chaudes</a>
+            <a href="#boissons-froides" class="nav-dot">Boissons Froides</a>
+        </nav>
+
+        <!-- Petit Déjeuner Section -->
+        <section id="petit-dej" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🌅</span>Petit Déjeuner</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Formule Classique</h3>
+                    <p class="item-description">Café ou thé, jus d'orange, croissant, beurre & confiture</p>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Formule Complète</h3>
+                    <p class="item-description">Café ou thé, jus, œufs, fromage, pain, beurre & confiture</p>
+                </div>
+                <span class="item-price">50 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Formule Marocaine</h3>
+                    <p class="item-description">Thé à la menthe, msemen, baghrir, huile d'olive, miel & amlou</p>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Œufs Brouillés</h3>
+                    <p class="item-description">Servis avec pain grillé</p>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Omelette Fromage</h3>
+                    <p class="item-description">Servie avec pain grillé</p>
+                </div>
+                <span class="item-price">30 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Croissant</h3>
+                </div>
+                <span class="item-price">15 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pain au Chocolat</h3>
+                </div>
+                <span class="item-price">18 DH</span>
+            </div>
+        </section>
+
+        <!-- Crêpes Sucrées Section -->
+        <section id="crepes-sucrees" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍽️</span>Crêpes Sucrées</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Nutella</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Confiture</h3>
+                </div>
+                <span class="item-price">20 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Miel</h3>
+                </div>
+                <span class="item-price">20 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Chocolat</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Banane Chocolat</h3>
+                </div>
+                <span class="item-price">30 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Fruits</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+        </section>
+
+        <!-- Gaufres Section -->
+        <section id="gaufres" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🧇</span>Gaufres</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Gaufre Sucre</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Gaufre Nutella</h3>
+                </div>
+                <span class="item-price">30 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Gaufre Chocolat</h3>
+                </div>
+                <span class="item-price">30 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Gaufre Fruits</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Gaufre Mixte</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+        </section>
+
+        <!-- Glaces Section -->
+        <section id="glaces" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍦</span>Glaces</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Glace 1 boule</h3>
+                </div>
+                <span class="item-price">15 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Glace 2 boules</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Glace 3 boules</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Coupe Glacée</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Banana Split</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+        </section>
+
+        <!-- Salades Section -->
+        <section id="salades" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🥗</span>Salades</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade César Poulet</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade Niçoise</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade Fromagère</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade Mixte</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade Marocaine</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade Thon</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade Crevettes</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade Burrata</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+        </section>
+
+        <!-- Burgers Section -->
+        <section id="burgers" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍔</span>Burgers</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Burger Classique</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Chicken Burger</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Cheese Burger</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Big Burger</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+        </section>
+
+        <!-- Grillades Section -->
+        <section id="grillades" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍗</span>Grillades</h2>
+            <p class="item-description" style="margin-bottom: 15px; font-style: italic;">Accompagnement : légumes, frites ou riz</p>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Brochettes Poulet</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Escalope Panée</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Escalope Grillée</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Cordon Bleu</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Brochettes Kefta</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Entrecôte</h3>
+                </div>
+                <span class="item-price">90 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Mixte Grill</h3>
+                </div>
+                <span class="item-price">90 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Escalope à la Crème Champignons</h3>
+                </div>
+                <span class="item-price">70 DH</span>
+            </div>
+        </section>
+
+        <!-- Coin Marocain Section -->
+        <section id="marocain" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍲</span>Coin Marocain</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Tajine Kefta</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Tajine Poulet Citron</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Tajine Poulet Légumes</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Tajine Viande Pruneaux</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Tajine Viande Légumes</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Couscous Poulet</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Couscous Viande</h3>
+                </div>
+                <span class="item-price">65 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pastilla Poulet</h3>
+                </div>
+                <span class="item-price">70 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pastilla Fruits de Mer</h3>
+                </div>
+                <span class="item-price">90 DH</span>
+            </div>
+        </section>
+
+        <!-- Pizzas Section -->
+        <section id="pizzas" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍕</span>Pizzas</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza Margherita</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza Thon</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza Fromage</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza Poulet</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza Viande Hachée</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza Fruits de Mer</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza 4 Fromages</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Pizza Mixte</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+        </section>
+
+        <!-- Pâtes Section -->
+        <section id="pates" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍝</span>Pâtes</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Spaghetti Bolognaise</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Spaghetti Carbonara</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Penne Poulet</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Penne Fruits de Mer</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Tagliatelles Saumon</h3>
+                </div>
+                <span class="item-price">55 DH</span>
+            </div>
+        </section>
+
+        <!-- Sandwichs Section -->
+        <section id="sandwichs" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🌯</span>Sandwichs</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Sandwich Poulet</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Sandwich Thon</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Sandwich Kefta</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Sandwich Viande</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+        </section>
+
+        <!-- Crêpes Salées Section -->
+        <section id="crepes-salees" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🥞</span>Crêpes Salées</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Poulet</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Thon</h3>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Fromage</h3>
+                </div>
+                <span class="item-price">30 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Viande Hachée</h3>
+                </div>
+                <span class="item-price">40 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crêpe Mixte</h3>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+        </section>
+
+        <!-- Desserts Section -->
+        <section id="desserts" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🍰</span>Desserts</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Crème Caramel</h3>
+                </div>
+                <span class="item-price">20 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Tiramisu</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Gâteau au Chocolat</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Salade de Fruits</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+        </section>
+
+        <!-- Milkshakes Section -->
+        <section id="milkshakes" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🥤</span>Milkshakes</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Milkshake Vanille</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Milkshake Chocolat</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Milkshake Fraise</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Milkshake Banane</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Milkshake Oreo</h3>
+                </div>
+                <span class="item-price">30 DH</span>
+            </div>
+        </section>
+
+        <!-- Boissons Chaudes Section -->
+        <section id="boissons-chaudes" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">☕</span>Boissons Chaudes</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Thé</h3>
+                </div>
+                <span class="item-price">10 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Café Noir</h3>
+                </div>
+                <span class="item-price">15 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Café Crème</h3>
+                </div>
+                <span class="item-price">20 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Cappuccino</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Chocolat Chaud</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+        </section>
+
+        <!-- Boissons Froides Section -->
+        <section id="boissons-froides" class="menu-section">
+            <h2 class="section-title"><span class="section-icon">🧃</span>Boissons Froides</h2>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Eau Minérale</h3>
+                </div>
+                <span class="item-price">10 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Soda</h3>
+                </div>
+                <span class="item-price">15 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Jus Orange</h3>
+                </div>
+                <span class="item-price">20 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Jus Citron</h3>
+                </div>
+                <span class="item-price">20 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Jus Mixte</h3>
+                </div>
+                <span class="item-price">25 DH</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="wavy-line"></div>
+            <div class="wifi-info">
+                <p><strong>WiFi :</strong> TheBrew_Guest</p>
+                <p><strong>Mot de passe :</strong> coffee2024</p>
+            </div>
+            <p class="footer-text" style="margin-top: 20px;">
+                Fait avec ♥ au Maroc
+            </p>
+            <p class="footer-text" style="margin-top: 8px;">
+                @thebrewcoffee
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
