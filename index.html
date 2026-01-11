@@ -158,6 +158,15 @@
             overflow: hidden;
         }
 
+        /* Student banner (top of menu) */
+        .student-banner {
+            border: 2px solid rgba(212, 196, 168, 0.7);
+        }
+
+        .student-banner .section-title {
+            margin-bottom: 15px;
+        }
+
         .menu-section::before {
             content: '';
             position: absolute;
@@ -469,6 +478,27 @@
             <a href="#boissons-chaudes" class="nav-dot">Boissons Chaudes</a>
             <a href="#boissons-froides" class="nav-dot">Boissons Froides</a>
         </nav>
+
+        <!-- Formules Étudiant Banner -->
+        <section id="formules-etudiant" class="menu-section student-banner">
+            <h2 class="section-title"><span class="section-icon">🎓</span>Formules Étudiant</h2>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Formule Sucrée</h3>
+                    <p class="item-description">Crêpe sucrée + boisson</p>
+                </div>
+                <span class="item-price">35 DH</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3 class="item-name">Formule Salée</h3>
+                    <p class="item-description">Crêpe salée + boisson</p>
+                </div>
+                <span class="item-price">45 DH</span>
+            </div>
+        </section>
 
         <!-- Petit Déjeuner Section -->
         <section id="petit-dej" class="menu-section">
