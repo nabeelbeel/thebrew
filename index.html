@@ -1240,10 +1240,8 @@
         <!-- Footer -->
         <footer>
             <div class="wavy-line"></div>
-            <div class="wifi-info">
-                <p><strong>WiFi :</strong> TheBrew_Guest</p>
-                <p><strong>Mot de passe :</strong> coffee2024</p>
-            </div>
+            
+            <!-- Google Review Button moved to floating left bottom -->
             <p class="footer-text" style="margin-top: 20px;">
                 Fait avec ♥ au Maroc
             </p>
@@ -1253,4 +1251,117 @@
         </footer>
     </div>
 </body>
+</footer>
+    <!-- Floating Instagram Button -->
+    <a href="https://www.instagram.com/thebrewrest/" target="_blank" rel="noopener" class="insta-btn-floating">
+        <span class="insta-logo">
+            <svg width="22" height="22" viewBox="0 0 448 448" style="vertical-align:middle;">
+                <linearGradient id="IGg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fd5"/>
+                    <stop offset="50%" stop-color="#ff543e"/>
+                    <stop offset="100%" stop-color="#c837ab"/>
+                </linearGradient>
+                <rect width="448" height="448" rx="90" fill="url(#IGg)"/>
+                <circle cx="224" cy="224" r="110" fill="#fff"/>
+                <circle cx="224" cy="224" r="80" fill="url(#IGg)"/>
+                <circle cx="340" cy="108" r="22" fill="#fff"/>
+            </svg>
+        </span>
+        <span>THE BREW</span>
+    </a>
+    <!-- Floating Google Review Button -->
+    <a href="https://google.com/maps/contrib/106163216952459392450" target="_blank" rel="noopener" class="review-btn-floating">
+        <span class="google-logo">
+            <svg width="22" height="22" viewBox="0 0 48 48" style="vertical-align:middle;">
+                <g>
+                    <path fill="#4285F4" d="M43.6 20.5H42V20.4H24v7.2h11.2C33.7 32.1 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.6 0 5 .9 6.9 2.4l5.8-5.8C33.5 7.1 28.9 5 24 5 12.9 5 4 13.9 4 25s8.9 20 20 20c11 0 20-8.9 20-20 0-1.3-.1-2.7-.4-4z"/>
+                    <path fill="#34A853" d="M6.3 14.1l5.9 4.3C14 15.1 18.7 12 24 12c2.6 0 5 .9 6.9 2.4l5.8-5.8C33.5 7.1 28.9 5 24 5c-7.2 0-13.4 4.1-16.7 10.1z"/>
+                    <path fill="#FBBC05" d="M24 44c5.2 0 9.9-1.7 13.6-4.7l-6.3-5.2C29.2 35.1 26.7 36 24 36c-5.3 0-9.7-2.9-12-7.1l-6.2 4.8C10.6 41.1 16.7 44 24 44z"/>
+                    <path fill="#EA4335" d="M43.6 20.5H42V20.4H24v7.2h11.2c-1.2 3.2-4.2 5.4-7.2 5.4-2.6 0-5-.9-6.9-2.4l-5.8 5.8C14.5 40.9 19.1 44 24 44c7.2 0 13.4-4.1 16.7-10.1z"/>
+                    <path fill="none" d="M0 0h48v48H0z"/>
+                </g>
+            </svg>
+        </span>
+        <span>Laissez votre avis!</span>
+    </a>
+    <style>
+        .insta-btn-floating {
+            position: fixed;
+            right: 24px;
+            bottom: 80px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px 12px 16px;
+            background: #fff;
+            color: #c837ab;
+            font-family: 'Bree Serif', serif;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(200, 55, 171, 0.13);
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 1.5px solid #e8dcc8;
+        }
+        .insta-btn-floating:hover, .insta-btn-floating:focus {
+            box-shadow: 0 8px 24px rgba(200, 55, 171, 0.18);
+            transform: translateY(-2px) scale(1.04);
+            background: #f5f0e8;
+        }
+        .insta-logo {
+            display: flex;
+            align-items: center;
+        }
+        .review-btn-floating {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px 12px 16px;
+            background: #fff;
+            color: #444;
+            font-family: 'Bree Serif', serif;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(92, 74, 50, 0.13);
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 1.5px solid #e8dcc8;
+        }
+        .review-btn-floating:hover, .review-btn-floating:focus {
+            box-shadow: 0 8px 24px rgba(92, 74, 50, 0.18);
+            transform: translateY(-2px) scale(1.04);
+            background: #f5f0e8;
+        }
+        .google-logo {
+            display: flex;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .insta-btn-floating {
+                right: 10px;
+                bottom: 70px;
+                padding: 10px 14px 10px 10px;
+                font-size: 0.95rem;
+            }
+            .review-btn-floating {
+                right: 10px;
+                bottom: 10px;
+                padding: 10px 14px 10px 10px;
+                font-size: 0.95rem;
+            }
+            .google-logo svg, .insta-logo svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
 </html>
